@@ -11,21 +11,21 @@ jobs:
       - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
       - name: Check out repository code - test
         uses: actions/checkout@v2
-      - run: ./mvn test
+      - run: ./mvn package
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
       
-      - name: build      
-        uses: actions/checkout@v2
-      - run: ./mvnw package
+      #- name: build      
+       # uses: actions/checkout@v2
+      #- run: ./mvnw package
 
-      - name: deploy
-        uses: shimataro/ssh-key-action@v2
-        with:
-            key: ${{ secrets.SSH_CDA_PRIVATE_KEY }}
-            name: id_rsa # optional
-            known_hosts: ${{ secrets.CDA_EC2_HOST }}
-            if_key_exists: fail # replace / ignore / fail; optional (defaults to fail)
-      - name: blah    
-      - run: 
-          scp ./target/spring-petclinic-2.5.0-SNAPSHOT.jar ${{ secrets.CDA_EC2_HOST }}:petclinic.jar
-          java -jar petclinic.jar --server.port=8083
+      #- name: deploy
+       # uses: shimataro/ssh-key-action@v2
+    #  with:
+    #      key: ${{ secrets.SSH_CDA_PRIVATE_KEY }}
+    #      name: id_rsa # optional
+    #      known_hosts: ${{ secrets.CDA_EC2_HOST }}
+    #      if_key_exists: fail # replace / ignore / fail; optional (defaults to fail)
+    #- name: blah    
+    #- run: 
+    #    scp ./target/spring-petclinic-2.5.0-SNAPSHOT.jar ${{ secrets.CDA_EC2_HOST }}:petclinic.jar
+    #    java -jar petclinic.jar --server.port=8083
