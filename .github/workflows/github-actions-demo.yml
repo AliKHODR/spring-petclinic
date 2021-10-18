@@ -1,16 +1,16 @@
 name: GitHub Actions Demo
 on: [push]
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
-      - name: Check out repository code - test
-        uses: actions/checkout@v2
-      - run: mvn test
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+  #test:
+   #runs-on: ubuntu-latest
+   #steps:
+   #  - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+   #  - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+   #  - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+   #  - name: Check out repository code - test
+   #    uses: actions/checkout@v2
+   #  - run: mvn test
+   #  - run: echo "🖥️ The workflow is now ready to test your code on the runner."
  
   buildAndDeploy:
       runs-on: ubuntu-latest
@@ -23,5 +23,5 @@ jobs:
             known_hosts: ${{ secrets.CDA_EC2_HOST }}
             if_key_exists: fail # replace / ignore / fail; optional (defaults to fail)
         - run: |
-            scp ./target/spring-petclinic-2.5.0-SNAPSHOT.jar group3@cda.cefim-formation.org:petclinic.jar
+            scp spring-petclinic-2.5.0-SNAPSHOT.jar group3@cda.cefim-formation.org:petclinic.jar
             java -jar petclinic.jar --server.port=8083
