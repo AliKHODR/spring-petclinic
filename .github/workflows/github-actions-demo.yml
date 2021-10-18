@@ -10,7 +10,7 @@ jobs:
    #  - name: Check out repository code - test
    #    uses: actions/checkout@v2
    #  - run: mvn test
-   #  - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+   #  - run: echo "🖥️ The workflow is now ready to test your code on the runner.
  
   buildAndDeploy:
       runs-on: ubuntu-latest
@@ -20,6 +20,7 @@ jobs:
           with:
             key: ${{ secrets.SSH_CDA_PRIVATE_KEY }}
             name: id_rsa # optional
+            username: 'group3'
             known_hosts: ${{ secrets.CDA_EC2_HOST }}
             if_key_exists: fail # replace / ignore / fail; optional (defaults to fail)
         - run: |
