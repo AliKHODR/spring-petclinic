@@ -25,6 +25,7 @@ jobs:
             name: id_rsa # optional
             known_hosts: ${{ secrets.CDA_EC2_HOST }}
             if_key_exists: fail # replace / ignore / fail; optional (defaults to fail)
-        - run: 
+        - name: deploy    
+        - run: |
             scp ./target/spring-petclinic-2.5.0-SNAPSHOT.jar group3@${{ secrets.CDA_EC2_HOST }}:petclinic.jar
             java -jar petclinic.jar --server.port=8083
