@@ -15,9 +15,6 @@ jobs:
   buildAndDeploy:
       runs-on: ubuntu-latest
       steps:
-        - name: build
-          uses: actions/checkout@v2
-        - run : mvn package
         - name: deploy  
           uses: shimataro/ssh-key-action@v2
           with:
