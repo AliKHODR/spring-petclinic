@@ -9,7 +9,7 @@ jobs:
       - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
       - name: Check out repository code - test
         uses: actions/checkout@v2
-      - run: ./mvn package
+      - run: mvn package
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
       
       #- name: build      
